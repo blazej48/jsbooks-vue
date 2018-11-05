@@ -1,8 +1,6 @@
 <template>
   <div class="main-container">
-    <book-filter class="aside-container"
-                 @sort-key-change="onSortKeyChange"
-                 @min-pages-change="onMinPagesChange"
+    <book-filter class="aside-container" v-model="filter"
     />
     <book-list class="list-container" :books="books"/>
   </div>
@@ -24,23 +22,17 @@
     },
     data() {
       return {
-        sortKey: null,
-        minPages: 0
+        filter: {
+          sort: null,
+          minPages: 0
+        }
       }
     },
     computed: {
       books: function () {
-        let result = books.filter(b => b.pages > +this.minPages);
-        result = sortBy(result, this.sortKey);
+        let result = books.filter(b => b.pages > (+this.filter.minPages || 0));
+        result = sortBy(result, this.filter.sort);
         return result;
-      }
-    },
-    methods: {
-      onSortKeyChange(sortKey) {
-        this.sortKey = sortKey;
-      },
-      onMinPagesChange(minPages) {
-        this.minPages = minPages;
       }
     }
   }

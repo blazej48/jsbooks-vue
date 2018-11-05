@@ -3,15 +3,16 @@
     <h2 class="header">Sortuj po</h2>
     <div class="sort-options">
       <div class="text">
-        <input v-model="sort" @change="$emit('sort-key-change', 'pages')" name="sort" type="radio" value="pages">
+        <input v-model="filter.sort" @change="update" name="sort" type="radio" value="pages">
         ilości stron
       </div>
       <div class="text">
-        <input v-model="sort" @change="$emit('sort-key-change', 'sortReleaseDate')" name="sort" type="radio" value="sortReleaseDate">
+        <input v-model="filter.sort" @change="update" name="sort" type="radio"
+               value="sortReleaseDate">
         dacie wydania
       </div>
       <div class="text">
-        <input v-model="sort" @change="$emit('sort-key-change', 'surname')" name="sort" type="radio" value="surname">
+        <input v-model="filter.sort" @change="update" name="sort" type="radio" value="surname">
         nazwisku autora
       </div>
     </div>
@@ -21,7 +22,8 @@
     <h2 class="header">Pokaż tylko</h2>
     <div class="text">
       Powyżej
-      <input v-model.number="minPages" @input="$emit('min-pages-change', $event.target.value)" class="input" type="text">
+      <input v-model.number="filter.minPages" @input="update" class="input"
+             type="text">
       stron
     </div>
     <div>
@@ -36,18 +38,23 @@
 <script>
   export default {
     name: 'book-filter',
-    data: function () {
-      return {
-        sort: null,
-        minPages: ''
+    props: {
+      filter: {
+        default: () => {
+          return {};
+        }
       }
     },
     methods: {
+      update() {
+        console.log(this.filter);
+        this.$emit('input', this.filter)
+      },
       clean() {
-        this.sort = null;
-        this.minPages = '';
-        this.$emit('min-pages-change', 0);
-        this.$emit('sort-key-change', null)
+        this.$emit('input', {
+          sort: null,
+          minPages: ''
+        });
       }
     }
   };
