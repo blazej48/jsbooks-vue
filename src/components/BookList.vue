@@ -12,8 +12,6 @@
     components: {
       BookItem,
     },
-    props: ['books'],
-    template: `
-    `
+    props: ['books']
   }
 </script>
