@@ -2,33 +2,14 @@
   <div class="aside-container">
     <h2 class="header">Sortuj po</h2>
     <div class="sort-options">
-      <div class="text">
-        <input v-model="filter.sort" @change="update" name="sort" type="radio" value="pages">
-        ilości stron
-      </div>
-      <div class="text">
-        <input v-model="filter.sort" @change="update" name="sort" type="radio"
-               value="sortReleaseDate">
-        dacie wydania
-      </div>
-      <div class="text">
-        <input v-model="filter.sort" @change="update" name="sort" type="radio" value="surname">
-        nazwisku autora
-      </div>
+      <div class="text"><input v-model="filter.sort" @change="update" name="sort" type="radio" value="pages">ilości stron</div>
+      <div class="text"><input v-model="filter.sort" @change="update" name="sort" type="radio" value="sortReleaseDate">dacie wydania</div>
+      <div class="text"><input v-model="filter.sort" @change="update" name="sort" type="radio" value="surname">nazwisku autora</div>
     </div>
-    <div>
-      <div class="divider"></div>
-    </div>
+    <div><div class="divider"></div></div>
     <h2 class="header">Pokaż tylko</h2>
-    <div class="text">
-      Powyżej
-      <input v-model.number="filter.minPages" @input="update" class="input"
-             type="text">
-      stron
-    </div>
-    <div>
-      <div class="divider"></div>
-    </div>
+    <div class="text">Powyżej<input v-model.number="filter.minPages" @input="update" class="input" type="text">stron</div>
+    <div><div class="divider"></div></div>
     <div class="button-container">
       <button class="button text" @click="clean()">Wyczyść</button>
     </div>
@@ -37,7 +18,7 @@
 
 <script>
   export default {
-    name: 'book-filter',
+    name: 'BookFilter',
     props: {
       filter: {
         default: () => {
@@ -47,7 +28,6 @@
     },
     methods: {
       update() {
-        console.log(this.filter);
         this.$emit('input', this.filter)
       },
       clean() {

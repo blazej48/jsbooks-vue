@@ -1,8 +1,8 @@
 <template>
   <div class="main-container">
-    <book-filter class="aside-container" v-model="filter"
+    <BookFilter class="aside-container" v-model="filter"
     />
-    <book-list class="list-container" :books="books"/>
+    <BookList class="list-container" :books="books"/>
   </div>
 </template>
 

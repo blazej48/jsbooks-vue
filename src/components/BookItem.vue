@@ -26,7 +26,7 @@
   import {openModal} from "../modal";
 
   export default {
-    name: 'book-item',
+    name: 'BookItem',
     props: ['number', 'book'],
     methods: {
       openModal() {
