@@ -1,8 +1,8 @@
 <template>
   <div class="main-container">
     <book-filter class="aside-container"
-                 v-on:sort-key-change="onSortKeyChange"
-                 v-on:min-pages-change="onMinPagesChange"
+                 @sort-key-change="onSortKeyChange"
+                 @min-pages-change="onMinPagesChange"
     />
     <book-list class="list-container" :books="books"/>
   </div>

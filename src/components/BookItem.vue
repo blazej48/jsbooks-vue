@@ -1,7 +1,7 @@
 <template>
   <div class="list-item">
     <div data-order class="list-item__number">{{number}}</div>
-    <div class="list-item__cover"><img height="236" v-on:click="openModal" :src="book.cover.small"></div>
+    <div class="list-item__cover"><img height="236" @click="openModal" :src="book.cover.small"></div>
     <div class="list-item__content">
       <div class="list-item__header text text--big text--heavy">{{book.title}}</div>
       <div class="list-item__separator"></div>

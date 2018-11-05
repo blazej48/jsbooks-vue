@@ -12,7 +12,7 @@ export function openModal(imgSrc) {
       }
     },
     template: `
-        <div class="modal" v-on:click="close">
+        <div class="modal" @click="close">
             <img class="modal__content" :src="imgSrc"/>
         </div>
     `,
